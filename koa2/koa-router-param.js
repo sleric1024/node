@@ -5,16 +5,13 @@ const app = new Koa();
 const router = new Router();
 
 router.get('/', (ctx, next) => {
-  ctx.body = 'Hello World!';
-})
-.get('/todo', (ctx, next) => {
-  ctx.body = 'Todo page!';
+  ctx.body = ctx.query;
 });
 
-app
-  .use(router.routes())
+app.use(router.routes())
   .use(router.allowedMethods());
 
+
 app.listen(3000, () => {
-  console.log('server is starting at port 3000!');
-});
+  console.log('Server starting at port 3000 !');
+})
